@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Button from './../button'
 import './../../App.css';
 
-const baseURL=process.env.REACT_APP_BASE_HTTP_URL
+const baseURL = process.env.REACT_APP_BASE_HTTP_URL
 
 export default class ServerList extends Component {
     state = {
@@ -38,9 +38,13 @@ export default class ServerList extends Component {
 
     createContainer = async () => {
         const res = await fetch(`${baseURL}/docker/run?imageName=websocket:1.0.0`);
-        const id = await res.text();
-        console.log(`OK with id: ${id}`)
-        await this.getContainer();
+        const messageOrId = await res.text();
+        if (res.status === 200) {
+            console.log(`OK with id: ${messageOrId}`)
+            await this.getContainer();
+        } else {
+            alert(messageOrId);
+        }
     }
 
     removeContainer = async (containerId) => {

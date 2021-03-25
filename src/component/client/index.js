@@ -10,6 +10,7 @@ export default class Client extends Component {
         websocket: null,
         connection: false,
         msg: '',
+        whichServer: '',
     }
 
     async componentDidMount() {
@@ -50,6 +51,10 @@ export default class Client extends Component {
             // 服务向消息
             if (msgObj.type === 2) {
                 const { serverIp: ip, serverUserCount: userCount } = msgObj
+                // 记录客户端对应的服务端，便于展示
+                this.setState({
+                    whichServer: ip,
+                })
                 // 调用父组件，最终是 server 兄弟组件的方法
                 this.props.updateServerInfo(ip, userCount);
             }
@@ -70,7 +75,7 @@ export default class Client extends Component {
         const { userId } = this.props
         return <div className='card'>
             <div className={this.state.connection ? 'up' : 'down'}></div>
-            客户端：{userId}
+            客户端：{userId} {this.state.whichServer && <small>[{this.state.whichServer}]</small>}
             <hr style={{ border: 'none' }} />
             {!this.state.connection && '自动连接中...'}
             {this.state.msg}
