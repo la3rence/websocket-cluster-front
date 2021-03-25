@@ -4,7 +4,7 @@ import Client from './component/client'
 import ServerList from './component/server'
 import './App.css';
 
-const baseURL = `http://localhost:7000`
+const baseURL = process.env.REACT_APP_BASE_HTTP_URL
 
 export default class App extends Component {
 
@@ -14,7 +14,7 @@ export default class App extends Component {
     inputMessage: '',
   }
 
-  // 调用链： 子组件 Client -> 调用此父组件的方法 -> 调用子组件 Server 方法。
+  // 调用链：子组件 Client -> 调用此父组件的方法 -> 调用子组件 Server 方法。
   callServerListUpdate = (ip, userCount) => {
     this.childServerComponent.updateServerInfo(ip, userCount);
   }

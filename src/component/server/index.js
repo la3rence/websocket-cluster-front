@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Button from './../button'
 import './../../App.css';
 
-const baseURL = `http://localhost:7000`
+const baseURL=process.env.REACT_APP_BASE_HTTP_URL
 
 export default class ServerList extends Component {
     state = {
@@ -23,7 +23,6 @@ export default class ServerList extends Component {
             return sameIp
         })) {
             serverInfo.push({ ip, userCount })
-            // todo 服务下线后也需要更新或删除
         }
         this.setState({
             serverInfo
@@ -62,11 +61,9 @@ export default class ServerList extends Component {
 
     render() {
         const { serverInfo } = this.state;
-        console.log(serverInfo);
-
         return (
             <div className='top20'>
-                <Button onClick={this.getContainer}>刷新服务列表</Button>
+                <Button onClick={this.getContainer}>刷新 WebSocket 服务列表</Button>
                 <table style={{ margin: '0 auto' }}>
                     <thead>
                         <tr>

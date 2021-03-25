@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './card.css'
 import Button from './../button'
 
-const baseWSURL = `ws://localhost:7000`
+const baseWSURL = process.env.REACT_APP_BASE_WS_URL
 
 export default class Client extends Component {
 
@@ -19,7 +19,6 @@ export default class Client extends Component {
     }
 
     doClose = () => {
-        console.log(`关闭当前 ws`)
         this.state.websocket.close()
     }
 
@@ -33,7 +32,6 @@ export default class Client extends Component {
             })
             console.log(`client ${userId} open`)
         }
-
 
         ws.onmessage = async (msgEvent) => {
             const message = msgEvent.data
@@ -52,18 +50,18 @@ export default class Client extends Component {
             // 服务向消息
             if (msgObj.type === 2) {
                 const { serverIp: ip, serverUserCount: userCount } = msgObj
-                // 调用父组件，最终是 server 兄弟组件
+                // 调用父组件，最终是 server 兄弟组件的方法
                 this.props.updateServerInfo(ip, userCount);
             }
         }
 
         ws.onclose = async () => {
+            console.log(`client ${userId} closed!`)
             this.setState({
                 connection: false
             })
-            console.log(`client ${userId} closed!`)
             // reconnect
-            await new Promise(r => setTimeout(r, 2000));
+            await new Promise(r => setTimeout(r, 5000));
             this.connectWebSocket(userId)
         }
     }
