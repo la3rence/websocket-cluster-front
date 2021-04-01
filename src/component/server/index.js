@@ -8,6 +8,7 @@ export default class ServerList extends Component {
     state = {
         containers: [],
         serverInfo: [],
+        namingInfo: {},
     }
 
     // 更新
@@ -34,6 +35,14 @@ export default class ServerList extends Component {
         this.props.onRef(this)
         // 获取服务列表
         await this.getContainer()
+        // 轮询请求
+        this.dataPolling = setInterval(async () => {
+            await this.getServerStatus();
+        }, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.dataPolling);
     }
 
     createContainer = async () => {
@@ -55,11 +64,22 @@ export default class ServerList extends Component {
     }
 
     getContainer = async () => {
-        const res = await fetch(`${baseURL}/docker/ps?containerName=websocket`)
+        const res = await fetch(`${baseURL}/docker/ps?containerName=websocket-server`)
         const ps = await res.json()
         console.log(ps)
         this.setState({
             containers: ps,
+        })
+        await this.getServerStatus();
+    }
+
+    getServerStatus = async () => {
+        const res = await fetch(`${baseURL}/discovery/naming`);
+        const ipAndStatusJSON = await res.json();
+        this.setState({
+            namingInfo: ipAndStatusJSON
+        }, () => {
+            // console.log(this.state.namingInfo)
         })
     }
 
@@ -83,12 +103,16 @@ export default class ServerList extends Component {
                     <tbody>
                         {this.state.containers.map((v, i) => {
                             const serverIPAddress = v.NetworkSettings.Networks['compose-network'].IPAddress
+                            const isHealthy = this.state.namingInfo[serverIPAddress]
                             return <tr key={i}>
                                 <td>{v.Id.slice(0, 12)}</td>
                                 <td>{v.Image}</td>
                                 <td>{v.Names[0].slice(1)}</td>
                                 <td>{serverIPAddress}</td>
-                                <td><div className={v.State === 'running' ? 'up' : 'down'}></div></td>
+                                <td>
+                                    <div className={v.State === 'running' ?
+                                        (isHealthy ? 'up' : 'unhealthy') : 'down'}></div>
+                                </td>
                                 <td>{serverInfo.filter((element) => {
                                     return element.ip === serverIPAddress
                                 }).map((v) => {

@@ -56,3 +56,12 @@
   display: inline-block;
   margin-right: 5px;
 }
+
+.unhealthy {
+  width: 12px;
+  height: 12px;
+  background-color: yellow;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
