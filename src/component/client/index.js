@@ -60,11 +60,11 @@ export default class Client extends Component {
             }
         }
 
-        ws.onclose = async () => {
-            console.log(`client ${userId} closed!`)
+        ws.onclose = async () => {  
             this.setState({
                 connection: false
             })
+            console.log(`client ${userId} closed!`)
             // reconnect
             await new Promise(r => setTimeout(r, 5000));
             this.connectWebSocket(userId)
