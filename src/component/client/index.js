@@ -3,7 +3,7 @@ import './card.css'
 import Button from './../button'
 
 const baseDomain = process.env.REACT_APP_BASE_DOMAIN
-const baseWSURL = `ws://${baseDomain}`
+const baseWSURL = `wss://${baseDomain}`
 
 export default class Client extends Component {
 

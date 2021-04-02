@@ -4,7 +4,8 @@ import Client from './component/client'
 import ServerList from './component/server'
 import './App.css';
 
-const baseURL = process.env.REACT_APP_BASE_HTTP_URL
+const baseDomain = process.env.REACT_APP_BASE_DOMAIN
+const baseURL = `https://${baseDomain}`
 
 export default class App extends Component {
 
