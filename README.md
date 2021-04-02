@@ -7,8 +7,7 @@
 新建 `.env.development.local` 文件，添加相关环境变量：
 
 ```
-REACT_APP_BASE_HTTP_URL=http://localhost:7000
-REACT_APP_BASE_WS_URL=ws://localhost:7000
+REACT_APP_BASE_DOMAIN=localhost:7000
 ```
 
 启动项目

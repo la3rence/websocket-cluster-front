@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import './card.css'
 import Button from './../button'
 
-const baseWSURL = process.env.REACT_APP_BASE_WS_URL
+const baseDomain = process.env.REACT_APP_BASE_DOMAIN
+const baseWSURL = `ws://${baseDomain}`
 
 export default class Client extends Component {
 
