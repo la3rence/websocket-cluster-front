@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Button from './../button'
 import './../../App.css';
 
-const baseURL = process.env.REACT_APP_BASE_HTTP_URL
+const baseDomain = process.env.REACT_APP_BASE_DOMAIN
+const baseURL = `http://${baseDomain}`
 
 export default class ServerList extends Component {
     state = {
