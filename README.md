@@ -7,7 +7,8 @@
 新建 `.env.development.local` 文件，添加相关环境变量：
 
 ```
-REACT_APP_BASE_DOMAIN=localhost:7000
+REACT_APP_REST_URL=http://127.0.0.1
+REACT_APP_WS_URL=ws://127.0.0.1
 ```
 
 启动项目
@@ -20,4 +21,10 @@ yarn start
 
 ## 效果图
 
-![WebSocket客户端](./image/websocket-clients.png)
+WebSocket servers or clients status:
+- `#ffff00`: Unhealthy (being started / shut down)
+- `#0cb00c`: Healthy (available for accepting request)
+- `#ff0102`: Down (disconneted)
+
+
+![WebSocket Cluster Demo GIF](./image/demo.gif)
