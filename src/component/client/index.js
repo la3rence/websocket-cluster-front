@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import './card.css'
 import Button from './../button'
 
@@ -14,7 +14,7 @@ export default class Client extends Component {
     }
 
     async componentDidMount() {
-        const { userId } = this.props
+        const {userId} = this.props
         await new Promise(r => setTimeout(r, 2000));
         this.connectWebSocket(userId)
     }
@@ -50,7 +50,7 @@ export default class Client extends Component {
             }
             // 服务向消息
             if (msgObj.type === 2) {
-                const { serverIp: ip, serverUserCount: userCount } = msgObj
+                const {serverIp: ip, serverUserCount: userCount} = msgObj
                 // 记录客户端对应的服务端，便于展示
                 this.setState({
                     whichServer: ip,
@@ -60,7 +60,7 @@ export default class Client extends Component {
             }
         }
 
-        ws.onclose = async () => {  
+        ws.onclose = async () => {
             this.setState({
                 connection: false
             })
@@ -72,15 +72,15 @@ export default class Client extends Component {
     }
 
     render() {
-        const { userId } = this.props
+        const {userId} = this.props
         return <div className='card'>
-            <div className={this.state.connection ? 'up' : 'down'}></div>
+            <div className={this.state.connection ? 'up' : 'down'}/>
             客户端：{userId} {this.state.whichServer && <small>[{this.state.whichServer}]</small>}
-            <hr style={{ border: 'none' }} />
+            <hr style={{border: 'none'}}/>
             {!this.state.connection && '自动连接中...'}
             {this.state.msg}
             {this.state.connection && <>
-                <br />
+                <br/>
                 <Button onClick={this.doClose}>
                     关闭
                 </Button>

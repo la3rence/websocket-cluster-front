@@ -1,67 +1,67 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 * {
-  background-color: #000000;
-  color: #c9d1d9;
+    background-color: #000000;
+    color: #c9d1d9;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 .top20 {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
 .cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .down {
-  width: 12px;
-  height: 12px;
-  background-color: red;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 .up {
-  width: 12px;
-  height: 12px;
-  background-color: #0cb00c;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #0cb00c;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 .unhealthy {
-  width: 12px;
-  height: 12px;
-  background-color: yellow;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
 }
