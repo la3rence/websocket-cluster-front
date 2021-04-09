@@ -30,20 +30,22 @@ export default class Client extends Component {
             this.setState({
                 websocket: ws,
                 connection: true
+            }, () => {
+                console.log(`client ${userId} open`)
             })
-            console.log(`client ${userId} open`)
         }
 
         ws.onmessage = async (msgEvent) => {
             const message = msgEvent.data
-            console.log(`${userId} 收到: ${message}`);
+            console.log(`客户端 ${userId} 收到: ${message}`);
             const msgObj = JSON.parse(message)
             // 用户向消息
             if (msgObj.type === 1) {
                 this.setState({
                     msg: msgObj.content,
+                }, async () => {
+                    await new Promise(r => setTimeout(r, 5000));
                 })
-                await new Promise(r => setTimeout(r, 5000));
                 this.setState({
                     msg: null,
                 })
@@ -63,11 +65,12 @@ export default class Client extends Component {
         ws.onclose = async () => {
             this.setState({
                 connection: false
+            }, async () => {
+                console.log(`client ${userId} closed!`)
+                // reconnect
+                await new Promise(r => setTimeout(r, 5000));
+                this.connectWebSocket(userId)
             })
-            console.log(`client ${userId} closed!`)
-            // reconnect
-            await new Promise(r => setTimeout(r, 5000));
-            this.connectWebSocket(userId)
         }
     }
 

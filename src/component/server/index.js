@@ -66,11 +66,11 @@ export default class ServerList extends Component {
     getContainer = async () => {
         const res = await fetch(`${baseURL}/docker/ps?containerName=websocket-server`)
         const ps = await res.json()
-        console.log(ps)
         this.setState({
             containers: ps,
+        }, async () => {
+            await this.getServerStatus();
         })
-        await this.getServerStatus();
     }
 
     getServerStatus = async () => {

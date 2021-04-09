@@ -1,4 +1,4 @@
-# Demo front-end project for WebSocket cluster 
+# Demo front-end project for WebSocket cluster
 
 此项目为[实战 Spring Cloud 的 WebSocket 集群](https://github.com/Lonor/websocket-cluster)的前端页面。
 
@@ -12,6 +12,7 @@ REACT_APP_WS_URL=ws://127.0.0.1
 ```
 
 启动项目
+
 ```
 yarn
 yarn start
@@ -22,9 +23,9 @@ yarn start
 ## 效果图
 
 WebSocket servers or clients status:
-- `#ffff00`: Unhealthy (being started / shut down)
-- `#0cb00c`: Healthy (available for accepting request)
-- `#ff0102`: Down (disconneted)
 
+- `#ffff00` Unhealthy (being started / shut down)
+- `#0cb00c` Healthy (available for accepting request)
+- `#ff0102` Down (disconncted)
 
 ![WebSocket Cluster Demo GIF](./image/demo.gif)
