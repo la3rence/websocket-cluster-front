@@ -39,13 +39,12 @@ export default class Client extends Component {
             const message = msgEvent.data
             console.log(`客户端 ${userId} 收到: ${message}`);
             const msgObj = JSON.parse(message)
-            // 用户向消息
+            // 用户客户端向消息
             if (msgObj.type === 1) {
                 this.setState({
                     msg: msgObj.content,
-                }, async () => {
-                    await new Promise(r => setTimeout(r, 5000));
                 })
+                await new Promise(r => setTimeout(r, 5000));
                 this.setState({
                     msg: null,
                 })
