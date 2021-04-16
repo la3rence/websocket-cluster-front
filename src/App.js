@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Button from './component/button'
-import Client from './component/client'
+import Client from './component/client/client_hook'
 import ServerList from './component/server'
 import './App.css';
 
