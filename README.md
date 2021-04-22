@@ -20,6 +20,10 @@ yarn start
 
 访问 `http://localhost:3000` 即可查看效果。
 
+## React Hooks
+
+组件中以 `_hook` 结尾的 js 是使用了 React Hooks 重构。原始的 Class 式组件均保留而未使用。
+
 ## 效果图
 
 WebSocket servers or clients status:
