@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Button from './../button'
-import './../../App.css';
+import Button from '../button'
 import {baseURL} from "../../endpoint";
+import '../../App.css';
 
 export default class ServerList extends Component {
     state = {

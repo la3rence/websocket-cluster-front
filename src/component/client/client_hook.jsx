@@ -1,7 +1,7 @@
-import './card.css'
-import Button from './../button'
+import Button from '../button'
 import React, {useEffect, useState} from "react";
-import {baseWSURL} from './../../endpoint'
+import {baseWSURL} from '../../endpoint'
+import './card.css'
 
 export default function Client(props) {
 

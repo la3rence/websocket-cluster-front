@@ -1,7 +1,7 @@
-import Button from './../button'
 import React, {forwardRef, useEffect, useImperativeHandle, useState} from "react";
-import './../../App.css';
+import Button from '../button'
 import {baseURL} from "../../endpoint";
+import '../../App.css';
 
 function ServerList(props, ref) {
     const [containers, setContainers] = useState([]);
