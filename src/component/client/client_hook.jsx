@@ -1,6 +1,6 @@
 import './card.css'
 import Button from './../button'
-import React, {useEffect, useState, useCallback} from "react";
+import React, {useEffect, useState} from "react";
 
 const baseWSURL = process.env.REACT_APP_WS_URL
 
@@ -11,7 +11,7 @@ export default function Client(props) {
     const [msg, setMsg] = useState('');
     const [whichServer, setWhichServer] = useState('');
 
-    const connectWebSocket = useCallback(userId => {
+    const connectWebSocket = userId => {
         const ws = new WebSocket(`${baseWSURL}/websocket/connect/${userId}`)
 
         ws.onopen = () => {
@@ -43,7 +43,7 @@ export default function Client(props) {
             await new Promise(r => setTimeout(r, 5000));
             connectWebSocket(userId)
         }
-    }, [props]);
+    };
 
     useEffect(() => {
         console.log(`【Connection Effect】客户端 ${props.userId} 连接 ${connection ? '打开' : '关闭'}`)
