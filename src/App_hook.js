@@ -2,9 +2,8 @@ import {useRef, useState} from "react";
 import ServerList from "./component/server/server_hook";
 import Button from "./component/button";
 import Client from "./component/client/client_hook";
+import {baseURL} from "./endpoint";
 import './App.css';
-
-const baseURL = process.env.REACT_APP_REST_URL
 
 export default function App() {
     const [clients, setClients] = useState([])

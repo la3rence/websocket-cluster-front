@@ -1,8 +1,7 @@
 import Button from './../button'
 import React, {forwardRef, useEffect, useImperativeHandle, useState} from "react";
 import './../../App.css';
-
-const baseURL = process.env.REACT_APP_REST_URL
+import {baseURL} from "../../endpoint";
 
 function ServerList(props, ref) {
     const [containers, setContainers] = useState([]);

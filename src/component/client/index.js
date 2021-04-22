@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import './card.css'
 import Button from './../button'
-
-const baseWSURL = process.env.REACT_APP_WS_URL
+import {baseWSURL} from "../../endpoint";
 
 export default class Client extends Component {
 

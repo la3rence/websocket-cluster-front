@@ -1,8 +1,7 @@
 import './card.css'
 import Button from './../button'
 import React, {useEffect, useState} from "react";
-
-const baseWSURL = process.env.REACT_APP_WS_URL
+import {baseWSURL} from './../../endpoint'
 
 export default function Client(props) {
 

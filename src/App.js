@@ -2,9 +2,8 @@ import React, {Component} from 'react'
 import Button from './component/button'
 import Client from './component/client/client_hook'
 import ServerList from './component/server'
+import {baseURL} from "./endpoint";
 import './App.css';
-
-const baseURL = process.env.REACT_APP_REST_URL
 
 export default class App extends Component {
 
