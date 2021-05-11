@@ -61,10 +61,14 @@ function ServerList(props, ref) {
     }
 
     const getContainer = async () => {
-        const res = await fetch(`${baseURL}/docker/ps?containerName=websocket-server`)
-        const ps = await res.json()
-        setContainers(ps)
-        await getServerStatus();
+        try {
+            const res = await fetch(`${baseURL}/docker/ps?containerName=websocket-server`)
+            const ps = await res.json()
+            setContainers(ps)
+            await getServerStatus();
+        } catch (e) {
+            alert("服务端未能启动，请联系作者（可能没钱买服务器了 😢）")
+        }
     }
 
     const getServerStatus = async () => {
